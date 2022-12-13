@@ -19,11 +19,7 @@ class CustomerController extends Controller
     
     public function store(Request $request)
     {
-        $customer = new Customer;
-        $customer->nama = $request->nama;
-        $customer->alamat = $request->alamat;
-        $customer->telp = $request->telp;
-        $customer->save();
+        Customer::create($request->all());
         return redirect()->route('customer');
     }
 
@@ -35,11 +31,8 @@ class CustomerController extends Controller
 
     public function update(Request $request, $id)
     {
-        $customer = Customer::find($id);
-        $customer->nama = $request->nama;
-        $customer->alamat = $request->alamat;
-        $customer->telp = $request->telp;
-        $customer->save();
+        Customer::find($id)
+            ->update($request->all());
         return redirect()->route('customer');
     }
 

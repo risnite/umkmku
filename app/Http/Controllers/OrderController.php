@@ -20,11 +20,7 @@ class OrderController extends Controller
     
     public function store(Request $request)
     {
-        $order = new Order;
-        $order->customer_id = $request->customer_id;
-        $order->produk = $request->produk;
-        $order->catatan = $request->catatan;
-        $order->save();
+        Order::create($request->all());
         return redirect()->route('order');
     }
     
@@ -37,23 +33,8 @@ class OrderController extends Controller
 
     public function update(Request $request, $id)
     {
-        $order = Order::find($id);
-        if ($request->has('terkirim')) {
-          $order->terkirim = $request->terkirim;
-        }
-        if ($request->has('lunas')) {
-          $order->lunas = $request->lunas;
-        }
-        if ($request->has('customer_id')) {
-        $order->customer_id = $request->customer_id;
-        }
-        if ($request->has('produk')) {
-        $order->produk = $request->produk;
-        }
-        if ($request->has('catatan')) {
-        $order->catatan = $request->catatan;
-        }
-        $order->save();
+        Order::find($id)
+        ->update($request->all());
         return redirect()->route('order');
     }
 

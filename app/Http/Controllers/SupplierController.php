@@ -19,12 +19,7 @@ class SupplierController extends Controller
     
     public function store(Request $request)
     {
-        $supplier = new Supplier;
-        $supplier->nama = $request->nama;
-        $supplier->alamat = $request->alamat;
-        $supplier->telp = $request->telp;
-        $supplier->produk = $request->produk;
-        $supplier->save();
+        Supplier::create($request->all());
         return redirect()->route('supplier');
     }
 
@@ -36,12 +31,8 @@ class SupplierController extends Controller
 
     public function update(Request $request, $id)
     {
-        $supplier = Supplier::find($id);
-        $supplier->nama = $request->nama;
-        $supplier->alamat = $request->alamat;
-        $supplier->telp = $request->telp;
-        $supplier->produk = $request->produk;
-        $supplier->save();
+        Supplier::find($id)
+        ->update($request->all());
         return redirect()->route('supplier');
     }
 
