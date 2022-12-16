@@ -10,7 +10,7 @@ class OrderApiController extends Controller
 {
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::with('customer')->orderByDesc('updated_at')->get();
         return response()->json(['message' => 'Success', 'data' => $orders]);
     }
 
