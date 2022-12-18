@@ -2,6 +2,7 @@
   <!-- Page header -->
   <x-header name="Supplier"/>
   <x-form action="/supplier/update/{{ $supplier->id }}" title="Formulir Ubah Data Supplier" submit="Ubah Data Supplier" cancel="/supplier" color="info">
+    @method('PUT')
     <div class="form-group">
       <label for="name">Nama</label>
       <input type="text" id="name" class="form-control" name="nama" value="{{ $supplier->nama }}">
