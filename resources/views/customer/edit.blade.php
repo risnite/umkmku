@@ -1,7 +1,7 @@
 <x-app-layout>
   <!-- Page header -->
   <x-header name="Customer"/>
-  <x-form action="/customer/update/{{ $customer->id }}" title="Formulir Perubahan Data Customer" submit="Ubah Data Customer" cancel="/customer" color="info">
+  <x-form action="/customer/{{ $customer->id }}" title="Formulir Perubahan Data Customer" submit="Ubah Data Customer" cancel="/customer" color="info">
     @method('PUT')
     <div class="form-group">
       <label for="name">Nama</label>

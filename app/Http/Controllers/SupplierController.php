@@ -7,16 +7,16 @@ use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
-    public function index() 
+    public function index()
     {
         return view('supplier.index', ['suppliers' => Supplier::all()]);
     }
 
-    public function create() 
+    public function create()
     {
         return view('supplier.create');
     }
-    
+
     public function store(Request $request)
     {
         Supplier::create($request->all());
@@ -32,14 +32,14 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
         Supplier::find($id)
-        ->update($request->all());
+            ->update($request->all());
         return redirect()->route('supplier');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-      $supplier = Supplier::find($id);
-      $supplier->delete();
-      return redirect()->route('supplier');
+        $supplier = Supplier::find($id);
+        $supplier->delete();
+        return redirect()->route('supplier');
     }
 }

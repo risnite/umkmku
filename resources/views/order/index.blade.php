@@ -91,7 +91,8 @@
                           <i class="fas fa-pencil-alt"></i>
                           Ubah
                       </a>
-                      <form action="/order/delete/{{ $order->id }}" method="POST" class="d-inline" id="delete-order{{ $order->id }}">
+                      <form action="/order/{{ $order->id }}" method="POST" class="d-inline" id="delete-order{{ $order->id }}">
+                        @method('DELETE')
                         @csrf
                         <button type="button" class="btn btn-danger btn-sm" onclick="swalConfirm('delete-order{{ $order->id }}')">
                           <i class="fas fa-trash">

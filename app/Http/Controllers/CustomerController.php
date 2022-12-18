@@ -7,16 +7,16 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index() 
+    public function index()
     {
         return view('customer.index', ['customers' => Customer::all()]);
     }
 
-    public function create() 
+    public function create()
     {
         return view('customer.create');
     }
-    
+
     public function store(Request $request)
     {
         Customer::create($request->all());
@@ -36,10 +36,10 @@ class CustomerController extends Controller
         return redirect()->route('customer');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-      $customer = Customer::find($id);
-      $customer->delete();
-      return redirect()->route('customer');
+        $customer = Customer::find($id);
+        $customer->delete();
+        return redirect()->route('customer');
     }
 }

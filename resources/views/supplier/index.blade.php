@@ -57,7 +57,8 @@
                       </i>
                       Ubah
                   </a>
-                  <form action="/supplier/delete/{{ $supplier->id }}" method="POST" class="d-inline" id="delete-supplier{{ $supplier->id }}">
+                  <form action="/supplier/{{ $supplier->id }}" method="POST" class="d-inline" id="delete-supplier{{ $supplier->id }}">
+                    @method('DELETE')
                     @csrf
                     <button type="button" class="btn btn-danger btn-sm" onclick="swalConfirm('delete-supplier{{ $supplier->id }}')">
                       <i class="fas fa-trash"></i>
