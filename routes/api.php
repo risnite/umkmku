@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\CustomerApiController;
 use App\Http\Controllers\Api\SupplierApiController;
+use App\Models\Supplier;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,15 @@ use App\Http\Controllers\Api\SupplierApiController;
 
 Route::get('/user', [UserApiController::class, 'index']);
 Route::get('/order', [OrderApiController::class, 'index']);
+
+// Customer
 Route::get('/customer', [CustomerApiController::class, 'index']);
+Route::post('/customer/store', [CustomerApiController::class, 'store']);
+Route::put('/customer/{id}', [CustomerApiController::class, 'update']);
+Route::delete('/customer/{id}', [CustomerApiController::class, 'destroy']);
+
+// Supplier
 Route::get('/supplier', [SupplierApiController::class, 'index']);
+Route::post('/supplier', [SupplierApiController::class, 'store']);
+Route::put('/supplier/{id}', [SupplierApiController::class, 'update']);
+Route::delete('/supplier/{id}', [SupplierApiController::class, 'destroy']);

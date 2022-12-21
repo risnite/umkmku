@@ -17,7 +17,7 @@
     <div class="form-group">
       <label for="produk">Produk</label>
       <div class="d-flex fieldGroup mb-1">
-        <input type="text" id="produk" class="form-control" placeholder="Nama Produk" name="produk[produk1][nama]">
+        <input type="text" id="produk" class="form-control" placeholder="Nama Produk" name="produk[][nama]">
         <a href="javascript:void(0)" class="btn btn-success d-flex align-items-center col-1 addMore">
           <i class="fa-solid fa-plus"></i>
           <span class="d-none d-sm-block ml-2">Tambah</span> 
@@ -30,15 +30,13 @@
 		$(document).ready(function(){
       // membatasi jumlah inputan
       var maxGroup = 10;
-      let i = 1;
       
       //melakukan proses multiple input 
       $(".addMore").click(function(){
           if($('body').find('.fieldGroup').length < maxGroup){
-            i++;
               var fieldHTML = `
               <div class="d-flex fieldGroup mb-1">
-                <input type="text" id="produk" class="form-control" placeholder="Nama Produk" name="produk[produk${i}][nama]">
+                <input type="text" id="produk" class="form-control" placeholder="Nama Produk" name="produk[][nama]">
                 <a href="javascript:void(0)" class="btn btn-danger d-flex align-items-center col-1 remove">
                   <i class="fa-solid fa-trash"></i>
                   <span class="d-none d-sm-block ml-2">Hapus</span> 
@@ -53,7 +51,6 @@
       
       //remove fields group
       $("body").on("click",".remove",function(){ 
-        i--;
           $(this).parents(".fieldGroup").remove();
       });
     });

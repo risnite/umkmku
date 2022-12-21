@@ -10,7 +10,7 @@ class CustomerApiController extends Controller
 {
   public function index()
   {
-    $customers = Customer::all();
+    $customers = Customer::orderBy('nama')->get();
     return response()->json(['message' => 'Success', 'data' => $customers]);
   }
 
@@ -33,7 +33,7 @@ class CustomerApiController extends Controller
     return response()->json(['message' => 'Success', 'data' => $customer]);
   }
 
-  public function delete($id)
+  public function destroy($id)
   {
     $customer = Customer::find($id);
     $customer->delete();

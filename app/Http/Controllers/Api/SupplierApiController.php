@@ -10,13 +10,18 @@ class SupplierApiController extends Controller
 {
     public function index()
     {
-        $suppliers = Supplier::all();
+        $suppliers = Supplier::orderBy('nama')->get();
         return response()->json(['message' => 'Success', 'data' => $suppliers]);
     }
 
     public function store(Request $request)
     {
-        $supplier = Supplier::create($request->all());
+        $supplier = Supplier::create([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'telp' => $request->telp,
+            'produk' => json_decode($request->produk),
+        ]);
         return response()->json(['message' => 'Success', 'data' => $supplier]);
     }
 
@@ -29,11 +34,16 @@ class SupplierApiController extends Controller
     public function update(Request $request, $id)
     {
         $supplier = Supplier::find($id)
-            ->update($request->all());
+            ->update([
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'telp' => $request->telp,
+                'produk' => json_decode($request->produk),
+            ]);
         return response()->json(['message' => 'Success', 'data' => $supplier]);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $supplier = Supplier::find($id);
         $supplier->delete();

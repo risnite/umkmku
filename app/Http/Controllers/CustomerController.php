@@ -9,7 +9,7 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('customer.index', ['customers' => Customer::all()]);
+        return view('customer.index', ['customers' => Customer::all()->sortBy('nama')]);
     }
 
     public function create()
