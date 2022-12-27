@@ -14,8 +14,8 @@
     <div class="form-group">
       <label for="produk">Produk yang Dipesan</label>
       <div class="d-flex fieldGroup mb-1">
-        <input type="text" id="produk" class="form-control" placeholder="Nama Produk" name="produk[produk1][nama]">
-        <input type="number" id="produk" class="form-control col-3 mr-2" placeholder="Jumlah" name="produk[produk1][jumlah]">
+        <input type="text" id="produk" class="form-control" placeholder="Nama Produk" name="produk[0][nama]">
+        <input type="number" id="produk" class="form-control col-3 mr-2" placeholder="Jumlah" name="produk[0][jumlah]">
         <a href="javascript:void(0)" class="btn btn-success d-flex align-items-center col-1 addMore">
           <i class="fa-solid fa-plus"></i>
           <span class="d-none d-sm-block ml-2">Tambah</span> 
@@ -32,7 +32,7 @@
 		$(document).ready(function(){
       // membatasi jumlah inputan
       var maxGroup = 10;
-      let i = 1;
+      let i = 0;
       
       //melakukan proses multiple input 
       $(".addMore").click(function(){
@@ -40,8 +40,8 @@
             i++;
               var fieldHTML = `
               <div class="d-flex fieldGroup mb-1">
-                <input type="text" id="produk" class="form-control" placeholder="Nama Produk" name="produk[produk${i}][nama]">
-                <input type="number" id="produk" class="form-control col-3 mr-2" placeholder="Jumlah" name="produk[produk${i}][jumlah]">
+                <input type="text" id="produk" class="form-control" placeholder="Nama Produk" name="produk[${i}][nama]">
+                <input type="number" id="produk" class="form-control col-3 mr-2" placeholder="Jumlah" name="produk[${i}][jumlah]">
                 <a href="javascript:void(0)" class="btn btn-danger d-flex align-items-center col-1 remove">
                   <i class="fa-solid fa-trash"></i>
                   <span class="d-none d-sm-block ml-2">Hapus</span> 

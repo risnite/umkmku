@@ -1,12 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\CustomerApiController;
 use App\Http\Controllers\Api\SupplierApiController;
-use App\Models\Supplier;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +22,12 @@ use App\Models\Supplier;
 // });
 
 Route::get('/user', [UserApiController::class, 'index']);
+
+// Order
 Route::get('/order', [OrderApiController::class, 'index']);
+Route::post('/order', [OrderApiController::class, 'store']);
+Route::put('/order/{id}', [OrderApiController::class, 'update']);
+Route::delete('/order/{id}', [OrderApiController::class, 'destroy']);
 
 // Customer
 Route::get('/customer', [CustomerApiController::class, 'index']);

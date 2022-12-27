@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
   public function index()
   {
-    return view('order.index', ['orders' => Order::all()->sortByDesc('updated_at')]);
+    return view('order.index', ['orders' => Order::all()->sortByDesc('created_at')]);
   }
 
   public function create()
@@ -24,7 +24,7 @@ class OrderController extends Controller
     return redirect()->route('order');
   }
 
-  public function edit(Request $request, $id)
+  public function edit($id)
   {
     $order = Order::find($id);
     $customerId = $order->customer->id;
@@ -33,8 +33,16 @@ class OrderController extends Controller
 
   public function update(Request $request, $id)
   {
+    if ($request->terkirim) {
+      Order::find($id)->update(['terkirim' => $request->terkirim]);
+      return redirect()->route('order');
+    }
+    if ($request->lunas) {
+      Order::find($id)->update(['lunas' => $request->lunas]);
+      return redirect()->route('order');
+    }
     Order::find($id)
-      ->update($request->all());
+      ->update(['customer_id' => $request->customer_id, 'produk' => array_values($request->produk)]);
     return redirect()->route('order');
   }
 

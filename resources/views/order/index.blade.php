@@ -32,7 +32,7 @@
           </thead>
           <tbody>
             @foreach ($orders as $order)    
-              <tr>
+              <tr class="">
                   <td>
                       {{ $order->id }}
                   </td>
@@ -60,26 +60,30 @@
                   </td>
                   <td class="d-flex align-items-center">
                     @if ($order->terkirim)
-                      <form action="/order/update/{{ $order->id }}" method="POST">
+                      <form action="/order/{{ $order->id }}" method="POST">
+                        @method('PUT')
                         @csrf
                         <input name="terkirim" type="hidden" value="" />
                         <button class="btn btn-success btn-sm mr-1">Terkirim</button>
                       </form>
                     @else
-                      <form action="/order/update/{{ $order->id }}" method="POST">
+                      <form action="/order/{{ $order->id }}" method="POST">
+                        @method('PUT')
                         @csrf
                         <input name="terkirim" type="hidden" value="1" />
                         <button type="submit" class="btn btn-danger btn-sm mr-1">Belum Terkirim</button>
                       </form>
                     @endif
                     @if ($order->lunas)
-                      <form action="/order/update/{{ $order->id }}" method="POST">
+                      <form action="/order/{{ $order->id }}" method="POST">
+                        @method('PUT')
                         @csrf
                         <input name="lunas" type="hidden" value="" />
                         <button class="btn btn-success btn-sm">Lunas</button>
                       </form>
                     @else
-                      <form action="/order/update/{{ $order->id }}" method="POST">
+                      <form action="/order/{{ $order->id }}" method="POST">
+                        @method('PUT')
                         @csrf
                         <input name="lunas" type="hidden" value="1" />
                         <button type="submit" class="btn btn-danger btn-sm">Belum Lunas</button>
