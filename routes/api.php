@@ -31,7 +31,7 @@ Route::delete('/order/{id}', [OrderApiController::class, 'destroy']);
 
 // Customer
 Route::get('/customer', [CustomerApiController::class, 'index']);
-Route::post('/customer/store', [CustomerApiController::class, 'store']);
+Route::post('/customer', [CustomerApiController::class, 'store']);
 Route::put('/customer/{id}', [CustomerApiController::class, 'update']);
 Route::delete('/customer/{id}', [CustomerApiController::class, 'destroy']);
 
