@@ -2,4 +2,4 @@
 deployment:
  tasks:
  - export DEPLOYPATH=/home/farisweb/umkmku.farisweb.my.id/
- - /bin/cp $DEPLOYPATH
+ - /bin/cp -R . $DEPLOYPATH
